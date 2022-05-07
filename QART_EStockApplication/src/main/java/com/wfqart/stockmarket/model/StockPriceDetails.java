@@ -23,7 +23,7 @@ public class StockPriceDetails implements Serializable {
 
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@javax.persistence.Id
-	private Long Id;
+	private Long id;
 	
 	
 	private Long companyCode;
@@ -54,7 +54,7 @@ public class StockPriceDetails implements Serializable {
 	}	
 	public StockPriceDetails(Long id, Long companyCode, Double currentStockPrice, LocalDate stockPriceDate,	LocalTime stockPriceTime) {
 		super();
-		this.Id = id;
+		this.id = id;
 		this.companyCode = companyCode;
 		this.currentStockPrice = currentStockPrice;
 		this.stockPriceDate = stockPriceDate;
@@ -63,10 +63,10 @@ public class StockPriceDetails implements Serializable {
 
 	//---------------------------------------------------------------------------------------------------------------------------------
 	public Long getId() {
-		return Id;
+		return id;
 	}
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 	//---------------------------------------------------------------------------------------------------------------------------------
 	public Long getCompanyCode() {
@@ -98,7 +98,7 @@ public class StockPriceDetails implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "StockPriceDetails [Id=" + Id + ", companyCode=" + companyCode + ", currentStockPrice="
+		return "StockPriceDetails [Id=" + id + ", companyCode=" + companyCode + ", currentStockPrice="
 				+ currentStockPrice + ", stockPriceDate=" + stockPriceDate + ", stockPriceTime=" + stockPriceTime
 				+ ", company=" + company + "]";
 	}
