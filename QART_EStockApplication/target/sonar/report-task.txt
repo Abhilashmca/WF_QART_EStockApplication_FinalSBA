@@ -1,0 +1,6 @@
+projectKey=QART_WF_EStockApplication
+serverUrl=http://localhost:9000
+serverVersion=7.8.0.26217
+dashboardUrl=http://localhost:9000/dashboard?id=QART_WF_EStockApplication
+ceTaskId=AYCZpSPBXqmUZAWDfDYT
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYCZpSPBXqmUZAWDfDYT
