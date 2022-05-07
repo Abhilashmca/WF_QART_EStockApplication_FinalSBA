@@ -30,7 +30,7 @@ public class CompanyInfoController {
 	
 	//-------------------------------------------------------------------------------------------------------------------------------
 	@PostMapping(value="/addCompany")																					// 3. WORKING
-	public ResponseEntity<CompanyDetailsDTO> addCompanyDetails(@Valid @RequestBody CompanyDetailsDTO companyDetailsDTO, BindingResult bindingResult) throws InvalidCompanyException {
+	public ResponseEntity<CompanyDetailsDTO> addCompanyDetails(@Valid @RequestBody CompanyDetailsDTO companyDetailsDTO, BindingResult bindingResult) {
 		
 		if(bindingResult.hasErrors()) {
 			
@@ -55,14 +55,14 @@ public class CompanyInfoController {
 	@ExceptionHandler(InvalidCompanyException.class)
 	public ResponseEntity<InvalidCompanyExceptionResponse> companyHandler(InvalidCompanyException ex) {
 		InvalidCompanyExceptionResponse resp = new InvalidCompanyExceptionResponse(ex.getMessage(),System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value());
-		ResponseEntity<InvalidCompanyExceptionResponse> response =	new ResponseEntity<>(resp, HttpStatus.BAD_REQUEST);
-		return response;
+		return new ResponseEntity<>(resp, HttpStatus.BAD_REQUEST);
+		
 	}
 	//------------------------------------------------------------------------------------------------
 	@ExceptionHandler(CompanyNotFoundException.class)
 	public ResponseEntity<InvalidCompanyExceptionResponse> companyHandler(CompanyNotFoundException ex){
 		InvalidCompanyExceptionResponse resp = new InvalidCompanyExceptionResponse(ex.getMessage(),System.currentTimeMillis(), HttpStatus.NOT_FOUND.value());
-		ResponseEntity<InvalidCompanyExceptionResponse> response = new ResponseEntity<>(resp, HttpStatus.NOT_FOUND);
-		return response;
+		return new ResponseEntity<>(resp, HttpStatus.NOT_FOUND);
+		
 	}	
 }

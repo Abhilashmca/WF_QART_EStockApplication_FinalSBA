@@ -35,7 +35,7 @@ public class StockPriceController {
 	//-------------------------------------------------------------------------------------------------------------------------------
 	
 	@PostMapping(value="/addStock")																						// 2. WORKING
-	public ResponseEntity<StockPriceDetailsDTO> addStockDetails(@Valid @RequestBody StockPriceDetailsDTO stockPriceDetailsDTO, BindingResult bindingResult) throws InvalidStockException {
+	public ResponseEntity<StockPriceDetailsDTO> addStockDetails(@Valid @RequestBody StockPriceDetailsDTO stockPriceDetailsDTO, BindingResult bindingResult) {
 		
 		if(bindingResult.hasErrors()) {
 			throw new InvalidStockException("Invalid Stock Details!!!");
@@ -68,14 +68,14 @@ public class StockPriceController {
 	@ExceptionHandler(InvalidStockException.class)
 	public ResponseEntity<InvalidStockExceptionResponse> companyHandler(InvalidStockException ex) {
 		InvalidStockExceptionResponse resp = new InvalidStockExceptionResponse(ex.getMessage(),System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value());
-		ResponseEntity<InvalidStockExceptionResponse> response =	new ResponseEntity<>(resp, HttpStatus.BAD_REQUEST);
-		return response;
+		return new ResponseEntity<>(resp, HttpStatus.BAD_REQUEST);
+		
 	}
 	//------------------------------------------------------------------------------------------------
 	@ExceptionHandler(StockNotFoundException.class)
 	public ResponseEntity<InvalidStockExceptionResponse> companyHandler(StockNotFoundException ex) {
 		InvalidStockExceptionResponse resp = new InvalidStockExceptionResponse(ex.getMessage(),System.currentTimeMillis(), HttpStatus.NOT_FOUND.value());
-		ResponseEntity<InvalidStockExceptionResponse> response = new ResponseEntity<>(resp, HttpStatus.NOT_FOUND);
-		return response;
+		return new ResponseEntity<>(resp, HttpStatus.NOT_FOUND);
+		
 	}	
 }
