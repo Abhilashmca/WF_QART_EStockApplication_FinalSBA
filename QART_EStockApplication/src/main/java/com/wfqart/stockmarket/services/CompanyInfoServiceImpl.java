@@ -27,24 +27,24 @@ public class CompanyInfoServiceImpl implements CompanyInfoService {
 		repository.save(newCompany);
 		
 		return companyDetailsDTO;
-	};
+	}
 	//----------------------------------------------------------------------------
 	public CompanyDetailsDTO deleteCompany(Long companyCode) {
 		
 		Integer value = repository.deleteByCompanyCode(companyCode);
 		
 		if(value != null)
-			return (CompanyDetailsDTO) getCompanyInfoById(companyCode);
+			return  getCompanyInfoById(companyCode);
 		else
 			throw new CompanyNotFoundException("No Company Found in the Database...");
-	};
+	}
 	//----------------------------------------------------------------------------
 	public CompanyDetailsDTO getCompanyInfoById(Long companyCode) {
 		
 		CompanyDetails companyInfo = repository.findCompanyDetailsById(companyCode);
 
 		return StockMarketUtility.convertToCompanyDetailsDTO(companyInfo);
-	};
+	}
 	
 	
 }
