@@ -81,7 +81,7 @@ public class StockPriceDetailsDTO {
 		result = prime * result + ((stockPriceTime == null) ? 0 : stockPriceTime.hashCode());
 		return result;
 	}
-	@Override
+	/*@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -132,6 +132,6 @@ public class StockPriceDetailsDTO {
 			
 		return true;
 	}	
-	
+	*/
 	
 }

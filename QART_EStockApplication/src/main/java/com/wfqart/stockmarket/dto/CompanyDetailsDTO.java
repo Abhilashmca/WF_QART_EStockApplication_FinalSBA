@@ -96,7 +96,7 @@ public class CompanyDetailsDTO {
 		result = prime * result + ((turnover == null) ? 0 : turnover.hashCode());
 		return result;
 	}
-	@Override
+	/*@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -162,7 +162,7 @@ public class CompanyDetailsDTO {
 		}
 			
 		return true;
-	}
+	}*/
 	
 	@Override
 	public String toString() {

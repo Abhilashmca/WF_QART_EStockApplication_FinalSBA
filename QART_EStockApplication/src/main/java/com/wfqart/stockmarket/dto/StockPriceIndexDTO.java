@@ -74,7 +74,7 @@ public class StockPriceIndexDTO {
 		result = prime * result + ((stockPriceList == null) ? 0 : stockPriceList.hashCode());
 		return result;
 	}
-	@Override
+	/*@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -125,6 +125,6 @@ public class StockPriceIndexDTO {
 			
 		return true;
 	}
-	
+	*/
 	
 }
