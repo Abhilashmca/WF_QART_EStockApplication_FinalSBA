@@ -35,20 +35,7 @@ public class StockPriceDetailsDTO {
 	private LocalTime stockPriceTime;
 
 	//---------------------------------------------------------------------------------------------------------------------------------
-	public StockPriceDetailsDTO() {
-		super();
-		}
-	public StockPriceDetailsDTO(Long id, @NotNull @Size(min = 1, max = 10) Long companyCode,
-			@NotNull Double currentStockPrice, @NotNull LocalDate stockPriceDate, @NotNull LocalTime stockPriceTime) {
-		super();
-		this.id = id;
-		this.companyCode = companyCode;
-		this.currentStockPrice = currentStockPrice;
-		this.stockPriceDate = stockPriceDate;
-		this.stockPriceTime = stockPriceTime;
-	}
-
-	//---------------------------------------------------------------------------------------------------------------------------------
+		//---------------------------------------------------------------------------------------------------------------------------------
 	public Long getId() {
 		return id;
 	}

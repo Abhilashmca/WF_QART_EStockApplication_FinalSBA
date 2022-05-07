@@ -27,21 +27,7 @@ public class StockPriceIndexDTO {
 	private Double avgStockPrice;
 
 	//--------------------------------------------------------------------------------------------------------------------------
-	public StockPriceIndexDTO() {
-		super();
-	}
-	public StockPriceIndexDTO(@NotNull CompanyDetailsDTO companyDto,
-			@NotNull List<@NotBlank StockPriceDetailsDTO> stockPriceList,
-			@NotNull @Digits(integer = 10, fraction = 2, message = "Stock Price must have precision 10 and factional part of 2 decimals") Double maxStockPrice,
-			@NotNull @Digits(integer = 10, fraction = 2, message = "Stock Price must have precision 10 and factional part of 2 decimals") Double minStockPrice,
-			@NotNull @Digits(integer = 10, fraction = 2, message = "Stock Price must have precision 10 and factional part of 2 decimals") Double avgStockPrice) {
-		super();
-		this.companyDto = companyDto;
-		this.stockPriceList = stockPriceList;
-		this.maxStockPrice = maxStockPrice;
-		this.minStockPrice = minStockPrice;
-		this.avgStockPrice = avgStockPrice;
-	}
+	
 	//--------------------------------------------------------------------------------------------------------------------------
 	public CompanyDetailsDTO getCompanyDto() {
 		return companyDto;

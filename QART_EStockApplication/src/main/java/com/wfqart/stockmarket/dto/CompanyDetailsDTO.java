@@ -33,20 +33,7 @@ public class CompanyDetailsDTO {
 	private String companyProfile;
 	
 	//---------------------------------------------------------------------------------------------------------------------------------
-	public CompanyDetailsDTO() {
-		super();
-	}
-	public CompanyDetailsDTO(Long companyCode, String stockExchange, String companyName, String companyCEO, Double turnover, String boardOfDirectors, String companyProfile) {
-		super();
-		this.companyCode = companyCode;
-		this.stockExchange = stockExchange;
-		this.companyName = companyName;
-		this.companyCEO = companyCEO;
-		this.turnover = turnover;
-		this.boardOfDirectors = boardOfDirectors;
-		this.companyProfile = companyProfile;
-	}
-
+	
 	//---------------------------------------------------------------------------------------------------------------------------------
 	public Long getCompanyCode() {
 		return companyCode;
