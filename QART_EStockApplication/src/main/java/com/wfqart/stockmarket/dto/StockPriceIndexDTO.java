@@ -3,7 +3,6 @@ package com.wfqart.stockmarket.dto;
 import java.util.List;
 
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 public class StockPriceIndexDTO {
@@ -63,68 +62,6 @@ public class StockPriceIndexDTO {
 	public void setAvgStockPrice(Double avgStockPrice) {
 		this.avgStockPrice = avgStockPrice;
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((avgStockPrice == null) ? 0 : avgStockPrice.hashCode());
-		result = prime * result + ((companyDto == null) ? 0 : companyDto.hashCode());
-		result = prime * result + ((maxStockPrice == null) ? 0 : maxStockPrice.hashCode());
-		result = prime * result + ((minStockPrice == null) ? 0 : minStockPrice.hashCode());
-		result = prime * result + ((stockPriceList == null) ? 0 : stockPriceList.hashCode());
-		return result;
-	}
-	/*@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		StockPriceIndexDTO other = (StockPriceIndexDTO) obj;
-		if (avgStockPrice == null) {
-			if (other.avgStockPrice != null)
-				return false;
-		} else if (!avgStockPrice.equals(other.avgStockPrice))
-		{
-			return false;
-		}
-			
-		if (companyDto == null) {
-			if (other.companyDto != null)
-				return false;
-		} else if (!companyDto.equals(other.companyDto))
-		{
-			return false;
-		}
-			
-		if (maxStockPrice == null) {
-			if (other.maxStockPrice != null)
-				return false;
-		} else if (!maxStockPrice.equals(other.maxStockPrice))
-		{
-			return false;
-		}
-			
-		if (minStockPrice == null) {
-			if (other.minStockPrice != null)
-				return false;
-		} else if (!minStockPrice.equals(other.minStockPrice))
-		{
-			return false;
-		}
-			
-		if (stockPriceList == null) {
-			if (other.stockPriceList != null)
-				return false;
-		} else if (!stockPriceList.equals(other.stockPriceList))
-		{
-			return false;
-		}
-			
-		return true;
-	}
-	*/
-	
+
+		
 }

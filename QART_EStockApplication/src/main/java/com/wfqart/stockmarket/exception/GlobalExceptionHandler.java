@@ -12,9 +12,7 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ExceptionResponse> handler(CompanyNotFoundException ex) {
 		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),
 				HttpStatus.BAD_REQUEST.value());
-		ResponseEntity<ExceptionResponse> response = new ResponseEntity<>(exception,
-				HttpStatus.BAD_REQUEST);
-		return response;
+		return new ResponseEntity<>(exception,HttpStatus.BAD_REQUEST);
 		
 		
 	}
@@ -23,18 +21,18 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ExceptionResponse> handler(InvalidCompanyException ex) {
 		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),
 				HttpStatus.BAD_REQUEST.value());
-		ResponseEntity<ExceptionResponse> response = new ResponseEntity<>(exception,
+		return new ResponseEntity<>(exception,
 				HttpStatus.BAD_REQUEST);
-		return response;
+		
 	}
 	
 	@ExceptionHandler(InvalidStockException.class)
 	public ResponseEntity<ExceptionResponse> handler(InvalidStockException ex) {
 		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),
 				HttpStatus.BAD_REQUEST.value());
-		ResponseEntity<ExceptionResponse> response = new ResponseEntity<>(exception,
+		return new ResponseEntity<>(exception,
 				HttpStatus.BAD_REQUEST);
-		return response;
+		
 	}
 	
 	@ExceptionHandler(StockNotFoundException.class)
@@ -50,17 +48,17 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ExceptionResponse> handler(InvalidDateException ex) {
 		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),
 				HttpStatus.BAD_REQUEST.value());
-		ResponseEntity<ExceptionResponse> response = new ResponseEntity<>(exception,
+		return new ResponseEntity<>(exception,
 				HttpStatus.BAD_REQUEST);
-		return response;
+		
 	}
 	
 	@ExceptionHandler(GeneralException.class)
 	public ResponseEntity<ExceptionResponse> handler(GeneralException ex) {
 		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),
 				HttpStatus.BAD_REQUEST.value());
-		ResponseEntity<ExceptionResponse> response = new ResponseEntity<>(exception,
+		return new ResponseEntity<>(exception,
 				HttpStatus.BAD_REQUEST);
-		return response;
+		
 	}
 }
