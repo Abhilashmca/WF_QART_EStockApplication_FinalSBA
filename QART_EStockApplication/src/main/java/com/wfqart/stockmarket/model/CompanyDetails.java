@@ -96,15 +96,15 @@ public class CompanyDetails implements Serializable {
 	}
 	//---------------------------------------------------------------------------------------------------------------------------------
 	public Set<StockPriceDetails> getStockPriceDetails() {
-		return StockPriceDetails;
+		return stockpriceDetails;
 	}
 	public void setStockPriceDetails(Set<StockPriceDetails> stockPriceDetails) {
-		StockPriceDetails = stockPriceDetails;
+		stockpriceDetails = stockPriceDetails;
 	}
 	//---------------------------------------------------------------------------------------------------------------------------------
 	@OneToMany(cascade={CascadeType.MERGE})
 	@JoinColumn(name="companyCode")
-	private Set<StockPriceDetails> StockPriceDetails;
+	private Set<StockPriceDetails> stockpriceDetails;
 	
 	@Override
 	public String toString() {
