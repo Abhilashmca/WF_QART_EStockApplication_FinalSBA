@@ -65,10 +65,7 @@ public class StockMarketServiceImpl implements StockMarketService {
 		else
 			return stockDetails.stream().map(StockMarketUtility::convertToStockPriceDetailsDTO).collect(Collectors.toList());
 	}
-	//----------------------------------------------------------------------------
-	public StockPriceDetailsDTO getStockPriceDetailsDTO(StockPriceDetails stockDetails)	{
-		return new StockPriceDetailsDTO(stockDetails.getId(), stockDetails.getCompanyCode(), stockDetails.getCurrentStockPrice(), stockDetails.getStockPriceDate(), stockDetails.getStockPriceTime());
-	}
+	
 	//----------------------------------------------------------------------------
 	public Double getMaxStockPrice(Long companyCode, LocalDate startDate, LocalDate endDate) {
 		return stockRepository.findMaxStockPrice(companyCode, startDate, endDate);
