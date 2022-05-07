@@ -122,37 +122,58 @@ public class CompanyDetailsDTO {
 			if (other.boardOfDirectors != null)
 				return false;
 		} else if (!boardOfDirectors.equals(other.boardOfDirectors))
+		{
 			return false;
+		}
+			
 		if (companyCEO == null) {
 			if (other.companyCEO != null)
 				return false;
 		} else if (!companyCEO.equals(other.companyCEO))
+		{
 			return false;
+		}
+			
 		if (companyCode == null) {
 			if (other.companyCode != null)
 				return false;
 		} else if (!companyCode.equals(other.companyCode))
+		{
 			return false;
+		}
+			
 		if (companyName == null) {
 			if (other.companyName != null)
 				return false;
 		} else if (!companyName.equals(other.companyName))
+		{
 			return false;
+		}
+			
 		if (companyProfile == null) {
 			if (other.companyProfile != null)
 				return false;
 		} else if (!companyProfile.equals(other.companyProfile))
+		{
 			return false;
+		}
+			
 		if (stockExchange == null) {
 			if (other.stockExchange != null)
 				return false;
 		} else if (!stockExchange.equals(other.stockExchange))
+		{
 			return false;
+		}
+			
 		if (turnover == null) {
 			if (other.turnover != null)
 				return false;
 		} else if (!turnover.equals(other.turnover))
+		{
 			return false;
+		}
+			
 		return true;
 	}
 	

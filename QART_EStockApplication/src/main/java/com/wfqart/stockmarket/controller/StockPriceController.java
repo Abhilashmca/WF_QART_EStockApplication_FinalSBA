@@ -36,12 +36,12 @@ public class StockPriceController {
 	
 	@PostMapping(value="/addStock")																						// 2. WORKING
 	public ResponseEntity<StockPriceDetailsDTO> addStockDetails(@Valid @RequestBody StockPriceDetailsDTO stockPriceDetailsDTO, BindingResult bindingResult) throws InvalidStockException {
-		System.out.println("Called");
+		
 		if(bindingResult.hasErrors()) {
 			throw new InvalidStockException("Invalid Stock Details!!!");
 		}
 		else
-			return new ResponseEntity<StockPriceDetailsDTO>(stockMarketService.saveStockPriceDetails(stockPriceDetailsDTO), HttpStatus.OK);
+			return new ResponseEntity<>(stockMarketService.saveStockPriceDetails(stockPriceDetailsDTO), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/getStockByCompanyCode/{companyCode}")															// 4. WORKING
@@ -50,7 +50,7 @@ public class StockPriceController {
 		if( list == null)
 			throw new StockNotFoundException("Invalid Company Code!! Please enter valid companyCode...");
 		else
-			return new ResponseEntity<List<StockPriceDetailsDTO>>(list, HttpStatus.OK);
+			return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	@GetMapping(value = "/getStockPriceIndex/{companyCode}/{startDate}/{endDate}")										// 5. WORKING
@@ -59,7 +59,7 @@ public class StockPriceController {
 		if(stockMarketService.getStockPriceIndex(companyCode, startDate.toLocalDate(), endDate.toLocalDate()) == null)
 			throw new StockNotFoundException("Invalid Company Code or Date!!! Please enter valid Details...");
 		else	
-			return new ResponseEntity<StockPriceIndexDTO>(stockMarketService.getStockPriceIndex(companyCode, startDate.toLocalDate(), endDate.toLocalDate()), HttpStatus.OK);
+			return new ResponseEntity<>(stockMarketService.getStockPriceIndex(companyCode, startDate.toLocalDate(), endDate.toLocalDate()), HttpStatus.OK);
 	}
 	
 	//===============================================================================================================================
@@ -68,14 +68,14 @@ public class StockPriceController {
 	@ExceptionHandler(InvalidStockException.class)
 	public ResponseEntity<InvalidStockExceptionResponse> companyHandler(InvalidStockException ex) {
 		InvalidStockExceptionResponse resp = new InvalidStockExceptionResponse(ex.getMessage(),System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value());
-		ResponseEntity<InvalidStockExceptionResponse> response =	new ResponseEntity<InvalidStockExceptionResponse>(resp, HttpStatus.BAD_REQUEST);
+		ResponseEntity<InvalidStockExceptionResponse> response =	new ResponseEntity<>(resp, HttpStatus.BAD_REQUEST);
 		return response;
 	}
 	//------------------------------------------------------------------------------------------------
 	@ExceptionHandler(StockNotFoundException.class)
 	public ResponseEntity<InvalidStockExceptionResponse> companyHandler(StockNotFoundException ex) {
 		InvalidStockExceptionResponse resp = new InvalidStockExceptionResponse(ex.getMessage(),System.currentTimeMillis(), HttpStatus.NOT_FOUND.value());
-		ResponseEntity<InvalidStockExceptionResponse> response = new ResponseEntity<InvalidStockExceptionResponse>(resp, HttpStatus.NOT_FOUND);
+		ResponseEntity<InvalidStockExceptionResponse> response = new ResponseEntity<>(resp, HttpStatus.NOT_FOUND);
 		return response;
 	}	
 }

@@ -40,12 +40,18 @@ public class CompanyStockDetailsDTO {
 			if (other.companyDetails != null)
 				return false;
 		} else if (!companyDetails.equals(other.companyDetails))
+		{
 			return false;
+		}
+			
 		if (stockPriceDetails == null) {
 			if (other.stockPriceDetails != null)
 				return false;
 		} else if (!stockPriceDetails.equals(other.stockPriceDetails))
+		{
 			return false;
+		}
+			
 		return true;
 	}
 	
