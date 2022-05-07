@@ -7,8 +7,7 @@ public class ExceptionResponse {
 	private Integer status;
 
 	public ExceptionResponse() {
-		// TODO Auto-generated constructor stub
-	}
+			}
 
 	public ExceptionResponse(String message, Long timeStamp, Integer status) {
 		super();
@@ -64,17 +63,26 @@ public class ExceptionResponse {
 			if (other.message != null)
 				return false;
 		} else if (!message.equals(other.message))
+		{
 			return false;
+		}
+			
 		if (status == null) {
 			if (other.status != null)
 				return false;
 		} else if (!status.equals(other.status))
+		{
 			return false;
+		}
+			
 		if (timeStamp == null) {
 			if (other.timeStamp != null)
 				return false;
 		} else if (!timeStamp.equals(other.timeStamp))
+		{
 			return false;
+		}
+			
 		return true;
 	}
 

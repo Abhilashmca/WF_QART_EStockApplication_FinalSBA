@@ -2,6 +2,7 @@ package com.wfqart.stockmarket.services;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -59,7 +60,8 @@ public class StockMarketServiceImpl implements StockMarketService {
 		List<StockPriceDetails> stockDetails = stockRepository.findStockByCompanyCode(companyCode);
 		
 		if(CollectionUtils.isEmpty(stockDetails))
-			return null;
+			//return null;
+			return Collections.emptyList();
 		else
 			return stockDetails.stream().map(StockMarketUtility::convertToStockPriceDetailsDTO).collect(Collectors.toList());
 	}

@@ -12,16 +12,18 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ExceptionResponse> handler(CompanyNotFoundException ex) {
 		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),
 				HttpStatus.BAD_REQUEST.value());
-		ResponseEntity<ExceptionResponse> response = new ResponseEntity<ExceptionResponse>(exception,
+		ResponseEntity<ExceptionResponse> response = new ResponseEntity<>(exception,
 				HttpStatus.BAD_REQUEST);
 		return response;
+		
+		
 	}
 	
 	@ExceptionHandler(InvalidCompanyException.class)
 	public ResponseEntity<ExceptionResponse> handler(InvalidCompanyException ex) {
 		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),
 				HttpStatus.BAD_REQUEST.value());
-		ResponseEntity<ExceptionResponse> response = new ResponseEntity<ExceptionResponse>(exception,
+		ResponseEntity<ExceptionResponse> response = new ResponseEntity<>(exception,
 				HttpStatus.BAD_REQUEST);
 		return response;
 	}
@@ -30,7 +32,7 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ExceptionResponse> handler(InvalidStockException ex) {
 		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),
 				HttpStatus.BAD_REQUEST.value());
-		ResponseEntity<ExceptionResponse> response = new ResponseEntity<ExceptionResponse>(exception,
+		ResponseEntity<ExceptionResponse> response = new ResponseEntity<>(exception,
 				HttpStatus.BAD_REQUEST);
 		return response;
 	}
@@ -39,7 +41,7 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ExceptionResponse> handler(StockNotFoundException ex) {
 		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),
 				HttpStatus.BAD_REQUEST.value());
-		ResponseEntity<ExceptionResponse> response = new ResponseEntity<ExceptionResponse>(exception,
+		ResponseEntity<ExceptionResponse> response = new ResponseEntity<>(exception,
 				HttpStatus.BAD_REQUEST);
 		return response;
 	}
@@ -48,7 +50,7 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ExceptionResponse> handler(InvalidDateException ex) {
 		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),
 				HttpStatus.BAD_REQUEST.value());
-		ResponseEntity<ExceptionResponse> response = new ResponseEntity<ExceptionResponse>(exception,
+		ResponseEntity<ExceptionResponse> response = new ResponseEntity<>(exception,
 				HttpStatus.BAD_REQUEST);
 		return response;
 	}
@@ -57,7 +59,7 @@ public class GlobalExceptionHandler {
 	public ResponseEntity<ExceptionResponse> handler(GeneralException ex) {
 		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),
 				HttpStatus.BAD_REQUEST.value());
-		ResponseEntity<ExceptionResponse> response = new ResponseEntity<ExceptionResponse>(exception,
+		ResponseEntity<ExceptionResponse> response = new ResponseEntity<>(exception,
 				HttpStatus.BAD_REQUEST);
 		return response;
 	}

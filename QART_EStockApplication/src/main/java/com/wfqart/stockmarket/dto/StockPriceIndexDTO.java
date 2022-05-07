@@ -101,27 +101,42 @@ public class StockPriceIndexDTO {
 			if (other.avgStockPrice != null)
 				return false;
 		} else if (!avgStockPrice.equals(other.avgStockPrice))
+		{
 			return false;
+		}
+			
 		if (companyDto == null) {
 			if (other.companyDto != null)
 				return false;
 		} else if (!companyDto.equals(other.companyDto))
+		{
 			return false;
+		}
+			
 		if (maxStockPrice == null) {
 			if (other.maxStockPrice != null)
 				return false;
 		} else if (!maxStockPrice.equals(other.maxStockPrice))
+		{
 			return false;
+		}
+			
 		if (minStockPrice == null) {
 			if (other.minStockPrice != null)
 				return false;
 		} else if (!minStockPrice.equals(other.minStockPrice))
+		{
 			return false;
+		}
+			
 		if (stockPriceList == null) {
 			if (other.stockPriceList != null)
 				return false;
 		} else if (!stockPriceList.equals(other.stockPriceList))
+		{
 			return false;
+		}
+			
 		return true;
 	}
 	

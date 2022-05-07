@@ -9,6 +9,10 @@ import com.wfqart.stockmarket.model.CompanyDetails;
 import com.wfqart.stockmarket.model.StockPriceDetails;
 
 public class StockMarketUtility {
+	
+	private StockMarketUtility() {
+	    throw new IllegalStateException("Utility class");
+	  }
 
 	//=================================================================================================================================
 	//				1. Stock Price Conversion : Model to DTO - AND - DTO to Model
@@ -24,7 +28,7 @@ public class StockMarketUtility {
 		newStock.setStockPriceTime(stockPriceDetailsDTO.getStockPriceTime());
 
         return newStock;	
-	};
+	}
 	//---------------------------------------------------------------------------------------------------------------------------------
 	public static StockPriceDetailsDTO convertToStockPriceDetailsDTO(StockPriceDetails stockPriceDetails)	{
 		
@@ -37,7 +41,7 @@ public class StockMarketUtility {
 		newStock.setStockPriceTime(stockPriceDetails.getStockPriceTime());
 
         return newStock;		
-	};
+	}
 	
 	//=================================================================================================================================
 	//				2. Company Details Conversion : Model to DTO - AND - DTO to Model
@@ -55,7 +59,7 @@ public class StockMarketUtility {
 		newCompanyDTO.setCompanyProfile(companyDetails.getCompanyProfile());
 		
 		return newCompanyDTO;
-	};	
+	}	
 	//---------------------------------------------------------------------------------------------------------------------------------
 	public static CompanyDetails convertToCompanyDetails(CompanyDetailsDTO companyDetailsDTO)	{
 		
@@ -70,12 +74,12 @@ public class StockMarketUtility {
 		newCompany.setCompanyProfile(companyDetailsDTO.getCompanyProfile());
 		
 		return newCompany;
-	};	
+	}	
 
 	//---------------------------------------------------------------------------------------------------------------------------------
     public static List<CompanyDetailsDTO> convertToCompanyDetailsDtoList(List<CompanyDetails> companyDetailsList) {
     	
-        List<CompanyDetailsDTO> list = new ArrayList<CompanyDetailsDTO>();
+        List<CompanyDetailsDTO> list = new ArrayList<>();
         
         for(CompanyDetails companyDto: companyDetailsList) {
             list.add(convertToCompanyDetailsDTO(companyDto));
@@ -85,7 +89,7 @@ public class StockMarketUtility {
 	//---------------------------------------------------------------------------------------------------------------------------------
     public static List<StockPriceDetailsDTO> convertToStockPriceDetailsDtoList(List<StockPriceDetails> stockPriceDetailsList) {
     	
-		List<StockPriceDetailsDTO> list = new ArrayList<StockPriceDetailsDTO>();
+		List<StockPriceDetailsDTO> list = new ArrayList<>();
 		
 		for(StockPriceDetails stockDto : stockPriceDetailsList) {
 			list.add(convertToStockPriceDetailsDTO(stockDto));

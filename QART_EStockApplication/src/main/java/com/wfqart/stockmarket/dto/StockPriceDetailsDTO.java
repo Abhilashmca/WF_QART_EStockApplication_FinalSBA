@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class StockPriceDetailsDTO {
 	
-	private Long Id;
+	private Long id;
 	
 	@NotNull
 	private Long companyCode;
@@ -37,11 +37,11 @@ public class StockPriceDetailsDTO {
 	//---------------------------------------------------------------------------------------------------------------------------------
 	public StockPriceDetailsDTO() {
 		super();
-	}
+		}
 	public StockPriceDetailsDTO(Long id, @NotNull @Size(min = 1, max = 10) Long companyCode,
 			@NotNull Double currentStockPrice, @NotNull LocalDate stockPriceDate, @NotNull LocalTime stockPriceTime) {
 		super();
-		Id = id;
+		this.id = id;
 		this.companyCode = companyCode;
 		this.currentStockPrice = currentStockPrice;
 		this.stockPriceDate = stockPriceDate;
@@ -50,10 +50,10 @@ public class StockPriceDetailsDTO {
 
 	//---------------------------------------------------------------------------------------------------------------------------------
 	public Long getId() {
-		return Id;
+		return id;
 	}
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 	//---------------------------------------------------------------------------------------------------------------------------------
 	public Long getCompanyCode() {
@@ -87,7 +87,7 @@ public class StockPriceDetailsDTO {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((companyCode == null) ? 0 : companyCode.hashCode());
 		result = prime * result + ((currentStockPrice == null) ? 0 : currentStockPrice.hashCode());
 		result = prime * result + ((stockPriceDate == null) ? 0 : stockPriceDate.hashCode());
@@ -103,31 +103,46 @@ public class StockPriceDetailsDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		StockPriceDetailsDTO other = (StockPriceDetailsDTO) obj;
-		if (Id == null) {
-			if (other.Id != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!Id.equals(other.Id))
+		} else if (!id.equals(other.id))
+		{
 			return false;
+		}
+			
 		if (companyCode == null) {
 			if (other.companyCode != null)
 				return false;
 		} else if (!companyCode.equals(other.companyCode))
+		{
 			return false;
+		}
+			
 		if (currentStockPrice == null) {
 			if (other.currentStockPrice != null)
 				return false;
 		} else if (!currentStockPrice.equals(other.currentStockPrice))
+		{
 			return false;
+		}
+			
 		if (stockPriceDate == null) {
 			if (other.stockPriceDate != null)
 				return false;
 		} else if (!stockPriceDate.equals(other.stockPriceDate))
+		{
 			return false;
+		}
+			
 		if (stockPriceTime == null) {
 			if (other.stockPriceTime != null)
 				return false;
 		} else if (!stockPriceTime.equals(other.stockPriceTime))
+		{
 			return false;
+		}
+			
 		return true;
 	}	
 	
