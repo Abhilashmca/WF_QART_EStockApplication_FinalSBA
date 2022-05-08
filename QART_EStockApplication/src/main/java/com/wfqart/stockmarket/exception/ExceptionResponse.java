@@ -9,10 +9,9 @@ public class ExceptionResponse {
 	public ExceptionResponse() {
 			}
 
-	public ExceptionResponse(String message, Long timeStamp, Integer status) {
+	public ExceptionResponse(String message, Integer status) {
 		super();
 		this.message = message;
-		this.timeStamp = timeStamp;
 		this.status = status;
 	}
 

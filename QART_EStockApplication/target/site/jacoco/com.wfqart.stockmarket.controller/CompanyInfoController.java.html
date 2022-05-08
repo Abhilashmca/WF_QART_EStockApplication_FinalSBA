@@ -29,15 +29,15 @@ import com.wfqart.stockmarket.services.CompanyInfoService;
 
 	
 	//-------------------------------------------------------------------------------------------------------------------------------
-	@PostMapping(value=&quot;/addCompany&quot;)																					// 3. WORKING
+	@PostMapping(value=&quot;/add-company&quot;)																					// 3. WORKING
 	public ResponseEntity&lt;CompanyDetailsDTO&gt; addCompanyDetails(@Valid @RequestBody CompanyDetailsDTO companyDetailsDTO, BindingResult bindingResult) {
 		
-<span class="pc bpc" id="L35" title="1 of 2 branches missed.">		if(bindingResult.hasErrors()) {</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">		if(bindingResult.hasErrors()) {</span>
 			
 <span class="fc" id="L37">			throw new InvalidCompanyException(&quot;Invalid Company Details!!!&quot;);</span>
 		}
 		else
-<span class="nc" id="L40">			return new ResponseEntity&lt;&gt;(companyInfoService.saveCompanyDetails(companyDetailsDTO), HttpStatus.OK);</span>
+<span class="fc" id="L40">			return new ResponseEntity&lt;&gt;(companyInfoService.saveCompanyDetails(companyDetailsDTO), HttpStatus.OK);</span>
 	}
 	//-------------------------------------------------------------------------------------------------------------------------------
 	@DeleteMapping(value = &quot;/deleteCompany/{companyCode}&quot;)																// 4. WORKING

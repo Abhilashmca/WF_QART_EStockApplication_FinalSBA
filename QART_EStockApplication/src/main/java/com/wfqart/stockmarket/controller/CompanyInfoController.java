@@ -29,7 +29,7 @@ public class CompanyInfoController {
 
 	
 	//-------------------------------------------------------------------------------------------------------------------------------
-	@PostMapping(value="/addCompany")																					// 3. WORKING
+	@PostMapping(value="/add-company")																					// 3. WORKING
 	public ResponseEntity<CompanyDetailsDTO> addCompanyDetails(@Valid @RequestBody CompanyDetailsDTO companyDetailsDTO, BindingResult bindingResult) {
 		
 		if(bindingResult.hasErrors()) {

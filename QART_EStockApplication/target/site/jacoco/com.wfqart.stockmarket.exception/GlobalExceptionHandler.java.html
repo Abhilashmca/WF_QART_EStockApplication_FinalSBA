@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 	
 	@ExceptionHandler(CompanyNotFoundException.class)
 	public ResponseEntity&lt;ExceptionResponse&gt; handler(CompanyNotFoundException ex) {
-<span class="nc" id="L13">		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),</span>
+<span class="nc" id="L13">		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), </span>
 <span class="nc" id="L14">				HttpStatus.BAD_REQUEST.value());</span>
 <span class="nc" id="L15">		return new ResponseEntity&lt;&gt;(exception,HttpStatus.BAD_REQUEST);</span>
 		
@@ -19,46 +19,46 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 	
 	@ExceptionHandler(InvalidCompanyException.class)
 	public ResponseEntity&lt;ExceptionResponse&gt; handler(InvalidCompanyException ex) {
-<span class="nc" id="L22">		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),</span>
+<span class="nc" id="L22">		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), </span>
 <span class="nc" id="L23">				HttpStatus.BAD_REQUEST.value());</span>
 <span class="nc" id="L24">		return new ResponseEntity&lt;&gt;(exception,</span>
-<span class="nc" id="L25">				HttpStatus.BAD_REQUEST);</span>
+				HttpStatus.BAD_REQUEST);
 		
 	}
 	
 	@ExceptionHandler(InvalidStockException.class)
 	public ResponseEntity&lt;ExceptionResponse&gt; handler(InvalidStockException ex) {
-<span class="nc" id="L31">		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),</span>
+<span class="nc" id="L31">		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), </span>
 <span class="nc" id="L32">				HttpStatus.BAD_REQUEST.value());</span>
 <span class="nc" id="L33">		return new ResponseEntity&lt;&gt;(exception,</span>
-<span class="nc" id="L34">				HttpStatus.BAD_REQUEST);</span>
+				HttpStatus.BAD_REQUEST);
 		
 	}
 	
 	@ExceptionHandler(StockNotFoundException.class)
 	public ResponseEntity&lt;ExceptionResponse&gt; handler(StockNotFoundException ex) {
-<span class="nc" id="L40">		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),</span>
-<span class="nc" id="L41">				HttpStatus.BAD_REQUEST.value());</span>
-<span class="nc" id="L42">		ResponseEntity&lt;ExceptionResponse&gt; response = new ResponseEntity&lt;&gt;(exception,</span>
-<span class="nc" id="L43">				HttpStatus.BAD_REQUEST);</span>
-<span class="nc" id="L44">		return response;</span>
+<span class="fc" id="L40">		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), </span>
+<span class="fc" id="L41">				HttpStatus.BAD_REQUEST.value());</span>
+<span class="fc" id="L42">		ResponseEntity&lt;ExceptionResponse&gt; response = new ResponseEntity&lt;&gt;(exception,</span>
+				HttpStatus.BAD_REQUEST);
+<span class="fc" id="L44">		return response;</span>
 	}
 	
 	@ExceptionHandler(InvalidDateException.class)
 	public ResponseEntity&lt;ExceptionResponse&gt; handler(InvalidDateException ex) {
-<span class="nc" id="L49">		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),</span>
+<span class="nc" id="L49">		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), </span>
 <span class="nc" id="L50">				HttpStatus.BAD_REQUEST.value());</span>
 <span class="nc" id="L51">		return new ResponseEntity&lt;&gt;(exception,</span>
-<span class="nc" id="L52">				HttpStatus.BAD_REQUEST);</span>
+				HttpStatus.BAD_REQUEST);
 		
 	}
 	
 	@ExceptionHandler(GeneralException.class)
 	public ResponseEntity&lt;ExceptionResponse&gt; handler(GeneralException ex) {
-<span class="nc" id="L58">		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), System.currentTimeMillis(),</span>
+<span class="nc" id="L58">		ExceptionResponse exception = new ExceptionResponse(ex.getMessage(), </span>
 <span class="nc" id="L59">				HttpStatus.BAD_REQUEST.value());</span>
 <span class="nc" id="L60">		return new ResponseEntity&lt;&gt;(exception,</span>
-<span class="nc" id="L61">				HttpStatus.BAD_REQUEST);</span>
+				HttpStatus.BAD_REQUEST);
 		
 	}
 }

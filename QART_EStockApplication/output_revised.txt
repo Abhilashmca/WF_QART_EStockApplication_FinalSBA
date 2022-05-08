@@ -1,9 +1,5 @@
 
 testDeleteCompany=true
-testFindStockByCompanyCodeBDD=true
-testFindCompanyInfoById=false
 testDeleteCompanyBDD=true
 testFindStockByCompanyCode=true
-testStockPriceIndex=true
-testStockPriceIndexBDD=true
-testAddCompany=false
+testAddCompany=true

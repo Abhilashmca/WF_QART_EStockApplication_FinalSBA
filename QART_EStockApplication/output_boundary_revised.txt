@@ -1,7 +1,7 @@
 
 testAvgStockPriceLength=true
 testBoardOfDirectorsLength=true
-testPostStockPriceDetailsFailed=false
+testPostStockPriceDetailsFailed=true
 testTurnoverLength=true
 testCompanyNameLength=true
 testCurrentStockPriceLength=true

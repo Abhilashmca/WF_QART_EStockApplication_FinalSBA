@@ -1,11 +1,7 @@
 com\wfqart\stockmarket\boundaryTestCases\BoundaryTests.class
 com\wfqart\stockmarket\utilTestClass\JSONUtils.class
 com\wfqart\stockmarket\utilTestClass\TestUtils.class
-com\wfqart\stockmarket\functionalTestCases\TestController$5.class
 com\wfqart\stockmarket\functionalTestCases\TestController$1.class
-com\wfqart\stockmarket\functionalTestCases\TestController$3.class
 com\wfqart\stockmarket\exceptionTestCases\ExceptionTests.class
 com\wfqart\stockmarket\functionalTestCases\TestController.class
 com\wfqart\stockmarket\utilTestClass\MasterData.class
-com\wfqart\stockmarket\functionalTestCases\TestController$4.class
-com\wfqart\stockmarket\functionalTestCases\TestController$2.class

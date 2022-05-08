@@ -64,11 +64,7 @@ public class TestUtils
 		//createXML(testName, file);
 	}
 	public static void testReport(){
-		//System.out.println(testResult);
-		//System.out.print("\n" + BLUE_BOLD_BRIGHT + "TEST CASES EVALUATED : " + total + TEXT_RESET);
-		//System.out.print("\n" + GREEN_BOLD_BRIGHT + "PASSED : " + passed + TEXT_RESET);
-		//System.out.println("\n" + RED_BOLD_BRIGHT + "FAILED : " + failed + TEXT_RESET);
-	}
+			}
 	public static void createXML(String testName, File file) throws IOException {
 		FileWriter writer = new FileWriter(xmlFile,true);
 		if(file.getName().contains("output_revised")){

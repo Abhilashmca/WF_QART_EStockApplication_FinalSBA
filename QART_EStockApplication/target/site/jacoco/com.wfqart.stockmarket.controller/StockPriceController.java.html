@@ -34,7 +34,7 @@ import com.wfqart.stockmarket.services.StockMarketService;
 	// SERVICE OPERATIONS
 	//-------------------------------------------------------------------------------------------------------------------------------
 	
-	@PostMapping(value=&quot;/addStock&quot;)																						// 2. WORKING
+	@PostMapping(value=&quot;/add-stock&quot;)																						// 2. WORKING
 	public ResponseEntity&lt;StockPriceDetailsDTO&gt; addStockDetails(@Valid @RequestBody StockPriceDetailsDTO stockPriceDetailsDTO, BindingResult bindingResult) {
 		
 <span class="nc bnc" id="L40" title="All 2 branches missed.">		if(bindingResult.hasErrors()) {</span>
@@ -56,27 +56,27 @@ import com.wfqart.stockmarket.services.StockMarketService;
 	@GetMapping(value = &quot;/getStockPriceIndex/{companyCode}/{startDate}/{endDate}&quot;)										// 5. WORKING
 	public ResponseEntity&lt;StockPriceIndexDTO&gt; displayStockPriceIndex(@PathVariable Long companyCode, @PathVariable Date startDate, @PathVariable Date endDate) {
 		
-<span class="pc bpc" id="L59" title="1 of 2 branches missed.">		if(stockMarketService.getStockPriceIndex(companyCode, startDate.toLocalDate(), endDate.toLocalDate()) == null)</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">		if(stockMarketService.getStockPriceIndex(companyCode, startDate.toLocalDate(), endDate.toLocalDate()) == null)</span>
 <span class="nc" id="L60">			throw new StockNotFoundException(&quot;Invalid Company Code or Date!!! Please enter valid Details...&quot;);</span>
 		else	
-<span class="fc" id="L62">			return new ResponseEntity&lt;&gt;(stockMarketService.getStockPriceIndex(companyCode, startDate.toLocalDate(), endDate.toLocalDate()), HttpStatus.OK);</span>
+<span class="nc" id="L62">			return new ResponseEntity&lt;&gt;(stockMarketService.getStockPriceIndex(companyCode, startDate.toLocalDate(), endDate.toLocalDate()), HttpStatus.OK);</span>
 	}
 	
-	//===============================================================================================================================
+	/*//===============================================================================================================================
 	//			UTITLITY EXCEPTION HANDLERS - 2
 	//===============================================================================================================================
 	@ExceptionHandler(InvalidStockException.class)
 	public ResponseEntity&lt;InvalidStockExceptionResponse&gt; companyHandler(InvalidStockException ex) {
-<span class="nc" id="L70">		InvalidStockExceptionResponse resp = new InvalidStockExceptionResponse(ex.getMessage(),System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value());</span>
-<span class="nc" id="L71">		return new ResponseEntity&lt;&gt;(resp, HttpStatus.BAD_REQUEST);</span>
+		InvalidStockExceptionResponse resp = new InvalidStockExceptionResponse(ex.getMessage(),System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value());
+		return new ResponseEntity&lt;&gt;(resp, HttpStatus.BAD_REQUEST);
 		
 	}
 	//------------------------------------------------------------------------------------------------
 	@ExceptionHandler(StockNotFoundException.class)
 	public ResponseEntity&lt;InvalidStockExceptionResponse&gt; companyHandler(StockNotFoundException ex) {
-<span class="fc" id="L77">		InvalidStockExceptionResponse resp = new InvalidStockExceptionResponse(ex.getMessage(),System.currentTimeMillis(), HttpStatus.NOT_FOUND.value());</span>
-<span class="fc" id="L78">		return new ResponseEntity&lt;&gt;(resp, HttpStatus.NOT_FOUND);</span>
+		InvalidStockExceptionResponse resp = new InvalidStockExceptionResponse(ex.getMessage(),System.currentTimeMillis(), HttpStatus.NOT_FOUND.value());
+		return new ResponseEntity&lt;&gt;(resp, HttpStatus.NOT_FOUND);
 		
-	}	
+	}	*/
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

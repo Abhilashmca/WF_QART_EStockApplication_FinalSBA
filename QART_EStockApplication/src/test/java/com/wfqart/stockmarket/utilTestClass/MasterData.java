@@ -18,9 +18,9 @@ public class MasterData
 		CompanyDetailsDTO companyDetails = new CompanyDetailsDTO();
 		
 		companyDetails.setCompanyCode((long)1001);
-		companyDetails.setStockExchange("BSE");
-		companyDetails.setCompanyName("IIHT Pvt Ltd, Bangalore");
-		companyDetails.setCompanyCEO("Praveen Kumar");
+		companyDetails.setStockExchange("BSEIND");
+		companyDetails.setCompanyName("WellsFargo,Hyderabad");
+		companyDetails.setCompanyCEO("Abhilash");
 		companyDetails.setTurnover(65432.87);
 		companyDetails.setBoardOfDirectors("AAA, BBB, CCC");
 		companyDetails.setCompanyProfile("Base location is Bangalore, India");

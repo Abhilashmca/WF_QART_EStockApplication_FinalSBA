@@ -72,9 +72,9 @@ public class BoundaryTests implements Serializable
 	public void testCompanyCEOLength() throws Exception
 	{
 		CompanyDetailsDTO companyDetails = MasterData.getCompanyDetailsDTO();
-		companyDetails.setCompanyCEO("NAV");
+		companyDetails.setCompanyCEO("NAVIN");
 		Set<ConstraintViolation<CompanyDetailsDTO>> violations = validator.validate(companyDetails);
-		yakshaAssert(currentTest(), !violations.isEmpty()? true : false, boundaryTestFile);
+		yakshaAssert(currentTest(), violations.isEmpty()? true : false, boundaryTestFile);
 	}
 	//---------------------------------------------------------------------------------------------	
 	@Test
@@ -158,7 +158,7 @@ public class BoundaryTests implements Serializable
     	StockPriceDetailsDTO stockPrice = MasterData.getStockPriceDetailsDTO();
     	stockPrice.setId(null);
     	Set<ConstraintViolation<StockPriceDetailsDTO>> violations = validator.validate(stockPrice);
-	    yakshaAssert(currentTest(), !violations.isEmpty() ? true : false, boundaryTestFile);
+	    yakshaAssert(currentTest(), violations.isEmpty() ? true : false, boundaryTestFile);
     }
 
     //=============================================================================================

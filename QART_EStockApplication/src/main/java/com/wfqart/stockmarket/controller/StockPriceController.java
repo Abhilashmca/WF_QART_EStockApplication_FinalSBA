@@ -34,7 +34,7 @@ public class StockPriceController {
 	// SERVICE OPERATIONS
 	//-------------------------------------------------------------------------------------------------------------------------------
 	
-	@PostMapping(value="/addStock")																						// 2. WORKING
+	@PostMapping(value="/add-stock")																						// 2. WORKING
 	public ResponseEntity<StockPriceDetailsDTO> addStockDetails(@Valid @RequestBody StockPriceDetailsDTO stockPriceDetailsDTO, BindingResult bindingResult) {
 		
 		if(bindingResult.hasErrors()) {
@@ -62,7 +62,7 @@ public class StockPriceController {
 			return new ResponseEntity<>(stockMarketService.getStockPriceIndex(companyCode, startDate.toLocalDate(), endDate.toLocalDate()), HttpStatus.OK);
 	}
 	
-	//===============================================================================================================================
+	/*//===============================================================================================================================
 	//			UTITLITY EXCEPTION HANDLERS - 2
 	//===============================================================================================================================
 	@ExceptionHandler(InvalidStockException.class)
@@ -77,5 +77,5 @@ public class StockPriceController {
 		InvalidStockExceptionResponse resp = new InvalidStockExceptionResponse(ex.getMessage(),System.currentTimeMillis(), HttpStatus.NOT_FOUND.value());
 		return new ResponseEntity<>(resp, HttpStatus.NOT_FOUND);
 		
-	}	
+	}	*/
 }
