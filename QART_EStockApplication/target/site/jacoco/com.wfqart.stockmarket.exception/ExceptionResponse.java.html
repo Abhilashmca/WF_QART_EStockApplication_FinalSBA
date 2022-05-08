@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ExceptionResponse.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">StockMarket</a> &gt; <a href="index.source.html" class="el_package">com.wfqart.stockmarket.exception</a> &gt; <span class="el_source">ExceptionResponse.java</span></div><h1>ExceptionResponse.java</h1><pre class="source lang-java linenums">package com.wfqart.stockmarket.exception;
+
+public class ExceptionResponse {
+	
+	private String message;
+	private Long timeStamp;
+	private Integer status;
+
+<span class="nc" id="L9">	public ExceptionResponse() {</span>
+<span class="nc" id="L10">			}</span>
+
+	public ExceptionResponse(String message, Long timeStamp, Integer status) {
+<span class="nc" id="L13">		super();</span>
+<span class="nc" id="L14">		this.message = message;</span>
+<span class="nc" id="L15">		this.timeStamp = timeStamp;</span>
+<span class="nc" id="L16">		this.status = status;</span>
+<span class="nc" id="L17">	}</span>
+
+	public String getMessage() {
+<span class="nc" id="L20">		return message;</span>
+	}
+
+	public void setMessage(String message) {
+<span class="nc" id="L24">		this.message = message;</span>
+<span class="nc" id="L25">	}</span>
+
+	public Long getTimeStamp() {
+<span class="nc" id="L28">		return timeStamp;</span>
+	}
+
+	public void setTimeStamp(Long timeStamp) {
+<span class="nc" id="L32">		this.timeStamp = timeStamp;</span>
+<span class="nc" id="L33">	}</span>
+
+	public Integer getStatus() {
+<span class="nc" id="L36">		return status;</span>
+	}
+
+	public void setStatus(Integer status) {
+<span class="nc" id="L40">		this.status = status;</span>
+<span class="nc" id="L41">	}</span>
+
+	@Override
+	public int hashCode() {
+<span class="nc" id="L45">		final int prime = 31;</span>
+<span class="nc" id="L46">		int result = 1;</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">		result = prime * result + ((message == null) ? 0 : message.hashCode());</span>
+<span class="nc bnc" id="L48" title="All 2 branches missed.">		result = prime * result + ((status == null) ? 0 : status.hashCode());</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">		result = prime * result + ((timeStamp == null) ? 0 : timeStamp.hashCode());</span>
+<span class="nc" id="L50">		return result;</span>
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+<span class="nc bnc" id="L55" title="All 2 branches missed.">		if (this == obj)</span>
+<span class="nc" id="L56">			return true;</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">		if (obj == null)</span>
+<span class="nc" id="L58">			return false;</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">		if (getClass() != obj.getClass())</span>
+<span class="nc" id="L60">			return false;</span>
+<span class="nc" id="L61">		ExceptionResponse other = (ExceptionResponse) obj;</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">		if (message == null) {</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">			if (other.message != null)</span>
+<span class="nc" id="L64">				return false;</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">		} else if (!message.equals(other.message))</span>
+		{
+<span class="nc" id="L67">			return false;</span>
+		}
+			
+<span class="nc bnc" id="L70" title="All 2 branches missed.">		if (status == null) {</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">			if (other.status != null)</span>
+<span class="nc" id="L72">				return false;</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">		} else if (!status.equals(other.status))</span>
+		{
+<span class="nc" id="L75">			return false;</span>
+		}
+			
+<span class="nc bnc" id="L78" title="All 2 branches missed.">		if (timeStamp == null) {</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">			if (other.timeStamp != null)</span>
+<span class="nc" id="L80">				return false;</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">		} else if (!timeStamp.equals(other.timeStamp))</span>
+		{
+<span class="nc" id="L83">			return false;</span>
+		}
+			
+<span class="nc" id="L86">		return true;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

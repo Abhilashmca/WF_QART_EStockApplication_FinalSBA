@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StockMarketServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">StockMarket</a> &gt; <a href="index.source.html" class="el_package">com.wfqart.stockmarket.services</a> &gt; <span class="el_source">StockMarketServiceImpl.java</span></div><h1>StockMarketServiceImpl.java</h1><pre class="source lang-java linenums">package com.wfqart.stockmarket.services;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
+import com.wfqart.stockmarket.dto.CompanyDetailsDTO;
+import com.wfqart.stockmarket.dto.CompanyStockDetailsDTO;
+import com.wfqart.stockmarket.dto.StockPriceDetailsDTO;
+import com.wfqart.stockmarket.dto.StockPriceIndexDTO;
+import com.wfqart.stockmarket.exception.StockNotFoundException;
+import com.wfqart.stockmarket.model.CompanyDetails;
+import com.wfqart.stockmarket.model.StockPriceDetails;
+import com.wfqart.stockmarket.repository.CompanyInfoRepository;
+import com.wfqart.stockmarket.repository.StockPriceRepository;
+import com.wfqart.stockmarket.utils.StockMarketUtility;
+
+@Service
+@Transactional
+<span class="nc" id="L30">public class StockMarketServiceImpl implements StockMarketService {</span>
+
+	@Autowired
+    private StockPriceRepository stockRepository;
+
+	@Autowired
+    private CompanyInfoRepository companyRepository;
+	
+	//----------------------------------------------------------------------------
+	public StockPriceDetailsDTO saveStockPriceDetails(StockPriceDetailsDTO stockPriceDetailsDTO) {
+		
+<span class="nc" id="L41">		StockPriceDetails newStock = StockMarketUtility.convertToStockPriceDetails(stockPriceDetailsDTO);</span>
+
+<span class="nc" id="L43">		stockRepository.save(newStock);</span>
+		
+<span class="nc" id="L45">		return stockPriceDetailsDTO;</span>
+	}
+	//----------------------------------------------------------------------------
+	public List&lt;StockPriceDetailsDTO&gt; deleteStock(Long companyCode) {
+		
+<span class="nc" id="L50">		Integer value = stockRepository.deleteStockByCompanyCode(companyCode);</span>
+
+<span class="nc bnc" id="L52" title="All 2 branches missed.">		if(value != null)</span>
+<span class="nc" id="L53">			return StockMarketUtility.convertToStockPriceDetailsDtoList(stockRepository.findStockByCompanyCode(companyCode));</span>
+		else
+<span class="nc" id="L55">			throw new StockNotFoundException(&quot;Invalid Company Code. No Stock available against this company code.&quot;);</span>
+	}
+	//----------------------------------------------------------------------------
+	public List&lt;StockPriceDetailsDTO&gt; getStockByCode(Long companyCode){
+
+<span class="nc" id="L60">		List&lt;StockPriceDetails&gt; stockDetails = stockRepository.findStockByCompanyCode(companyCode);</span>
+		
+<span class="nc bnc" id="L62" title="All 2 branches missed.">		if(CollectionUtils.isEmpty(stockDetails))</span>
+			
+<span class="nc" id="L64">			return Collections.emptyList();</span>
+		else
+<span class="nc" id="L66">			return stockDetails.stream().map(StockMarketUtility::convertToStockPriceDetailsDTO).collect(Collectors.toList());</span>
+	}
+	
+	//----------------------------------------------------------------------------
+	public Double getMaxStockPrice(Long companyCode, LocalDate startDate, LocalDate endDate) {
+<span class="nc" id="L71">		return stockRepository.findMaxStockPrice(companyCode, startDate, endDate);</span>
+	}
+	public Double getAvgStockPrice(Long companyCode, LocalDate startDate, LocalDate endDate) {
+<span class="nc" id="L74">		return stockRepository.findAvgStockPrice(companyCode, startDate, endDate);</span>
+	}
+	public Double getMinStockPrice(Long companyCode, LocalDate startDate, LocalDate endDate) {
+<span class="nc" id="L77">		return stockRepository.findMinStockPrice(companyCode, startDate, endDate);</span>
+	}
+	
+	public StockPriceIndexDTO getStockPriceIndex(Long companyCode, LocalDate startDate, LocalDate endDate) {
+		
+<span class="nc" id="L82">		StockPriceIndexDTO stockPriceIndexDto = new StockPriceIndexDTO();</span>
+		
+<span class="nc" id="L84">		CompanyDetails companyDetails = companyRepository.findCompanyDetailsById(companyCode);</span>
+<span class="nc" id="L85">		stockPriceIndexDto.setCompanyDto(StockMarketUtility.convertToCompanyDetailsDTO(companyDetails));</span>
+		
+<span class="nc" id="L87">		List&lt;StockPriceDetailsDTO&gt; stockPriceList = getStockByCode(companyCode);</span>
+<span class="nc" id="L88">		stockPriceIndexDto.setStockPriceList(stockPriceList);</span>
+
+<span class="nc" id="L90">		Double maxStockPrice = getMaxStockPrice(companyCode, startDate, endDate);</span>
+<span class="nc" id="L91">		stockPriceIndexDto.setMaxStockPrice(maxStockPrice);</span>
+		
+<span class="nc" id="L93">		Double avgStockPrice = getAvgStockPrice(companyCode, startDate, endDate);</span>
+<span class="nc" id="L94">		stockPriceIndexDto.setAvgStockPrice(avgStockPrice);</span>
+
+<span class="nc" id="L96">		Double minStockPrice = getMinStockPrice(companyCode, startDate, endDate);</span>
+<span class="nc" id="L97">		stockPriceIndexDto.setMinStockPrice(minStockPrice);</span>
+
+<span class="nc" id="L99">		return stockPriceIndexDto;</span>
+	}
+	@Override
+	public List&lt;StockPriceDetailsDTO&gt; getAllStocksByCompanyCode(Long companyCode) {
+		
+<span class="nc" id="L104">		List&lt;StockPriceDetails&gt; stocks = stockRepository.findStockByCompanyCode(companyCode);</span>
+<span class="nc" id="L105">		List&lt;StockPriceDetailsDTO&gt; stockDtos = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">		for (StockPriceDetails stock : stocks) {</span>
+<span class="nc" id="L107">			StockPriceDetailsDTO stockDto = new StockPriceDetailsDTO();</span>
+<span class="nc" id="L108">			BeanUtils.copyProperties(stock, stockDto);</span>
+<span class="nc" id="L109">			stockDtos.add(stockDto);</span>
+		}
+
+<span class="nc" id="L112">		return stockDtos;</span>
+	}
+	public CompanyStockDetailsDTO getAllStocksDetailsByCompanyCode(Long companyCode) {
+
+<span class="nc" id="L116">		CompanyStockDetailsDTO companyStockDto = new CompanyStockDetailsDTO();</span>
+<span class="nc" id="L117">		Optional&lt;CompanyDetails&gt; companyDetails = companyRepository.findById(companyCode);</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">		if(companyDetails.isPresent()) {</span>
+<span class="nc" id="L119">			CompanyDetailsDTO companyDetailsDTO = new CompanyDetailsDTO();</span>
+<span class="nc" id="L120">			BeanUtils.copyProperties(companyDetails.get(), companyDetailsDTO);</span>
+<span class="nc" id="L121">			companyStockDto.setCompanyDto(companyDetailsDTO);</span>
+<span class="nc" id="L122">			companyStockDto.setStockPriceDTO(getStockByCode(companyCode));</span>
+<span class="nc" id="L123">			return companyStockDto;</span>
+		}
+		else
+<span class="nc" id="L126">			return null;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

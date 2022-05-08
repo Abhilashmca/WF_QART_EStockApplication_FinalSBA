@@ -148,21 +148,5 @@ public class ExceptionTests {
 		
 		yakshaAssert(currentTest(), result.getResponse().getStatus() == 404 ? true : false, exceptionTestFile);		
 	}
-	//--------------------------------------------------------------------------------------------
-	/*@Test
-	public void testStockForExceptionUponDeletingStockByInvalidValue() throws Exception
-	{
-		List<StockPriceDetailsDTO> stockList = new ArrayList<StockPriceDetailsDTO>();
-
-		Mockito.when(stockMarketService.deleteStock(2L)).thenThrow(new StockNotFoundException("Stock with Id - 2 not found"));
-				
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.delete("/stock/deleteStock/2")
-				.contentType(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON);
-				
-		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-
-		
-		yakshaAssert(currentTest(), result.getResponse().getStatus() == 404 ? true : false, exceptionTestFile);		
-	}*/	
+	
 }

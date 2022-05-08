@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>InvalidCompanyExceptionResponse.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">StockMarket</a> &gt; <a href="index.source.html" class="el_package">com.wfqart.stockmarket.dto</a> &gt; <span class="el_source">InvalidCompanyExceptionResponse.java</span></div><h1>InvalidCompanyExceptionResponse.java</h1><pre class="source lang-java linenums">package com.wfqart.stockmarket.dto;
+
+public class InvalidCompanyExceptionResponse {
+
+	private String message;
+	private long timeStamp;
+	private int status;
+	
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public InvalidCompanyExceptionResponse() {
+<span class="nc" id="L11">		super();</span>
+<span class="nc" id="L12">	}</span>
+	
+	public InvalidCompanyExceptionResponse(String message, long timeStamp, int status) {
+<span class="fc" id="L15">		super();</span>
+<span class="fc" id="L16">		this.message = message;</span>
+<span class="fc" id="L17">		this.timeStamp = timeStamp;</span>
+<span class="fc" id="L18">		this.status = status;</span>
+<span class="fc" id="L19">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public String getMessage() {
+<span class="fc" id="L22">		return message;</span>
+	}
+	public void setMessage(String message) {
+<span class="nc" id="L25">		this.message = message;</span>
+<span class="nc" id="L26">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public long getTimeStamp() {
+<span class="fc" id="L29">		return timeStamp;</span>
+	}
+	public void setTimeStamp(long timeStamp) {
+<span class="nc" id="L32">		this.timeStamp = timeStamp;</span>
+<span class="nc" id="L33">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public int getStatus() {
+<span class="fc" id="L36">		return status;</span>
+	}
+	public void setStatus(int status) {
+<span class="nc" id="L39">		this.status = status;</span>
+<span class="nc" id="L40">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

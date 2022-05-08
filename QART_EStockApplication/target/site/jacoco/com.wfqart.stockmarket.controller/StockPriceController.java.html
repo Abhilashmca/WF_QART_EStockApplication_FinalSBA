@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StockPriceController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">StockMarket</a> &gt; <a href="index.source.html" class="el_package">com.wfqart.stockmarket.controller</a> &gt; <span class="el_source">StockPriceController.java</span></div><h1>StockPriceController.java</h1><pre class="source lang-java linenums">package com.wfqart.stockmarket.controller;
+
+import java.sql.Date;
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.wfqart.stockmarket.dto.InvalidStockExceptionResponse;
+import com.wfqart.stockmarket.dto.StockPriceDetailsDTO;
+import com.wfqart.stockmarket.dto.StockPriceIndexDTO;
+import com.wfqart.stockmarket.exception.InvalidStockException;
+import com.wfqart.stockmarket.exception.StockNotFoundException;
+import com.wfqart.stockmarket.services.StockMarketService;
+
+@RestController
+@RequestMapping (value = &quot;/stock&quot;)
+<span class="fc" id="L29">public class StockPriceController {</span>
+
+	@Autowired
+	private StockMarketService stockMarketService;
+	//-------------------------------------------------------------------------------------------------------------------------------
+	// SERVICE OPERATIONS
+	//-------------------------------------------------------------------------------------------------------------------------------
+	
+	@PostMapping(value=&quot;/addStock&quot;)																						// 2. WORKING
+	public ResponseEntity&lt;StockPriceDetailsDTO&gt; addStockDetails(@Valid @RequestBody StockPriceDetailsDTO stockPriceDetailsDTO, BindingResult bindingResult) {
+		
+<span class="nc bnc" id="L40" title="All 2 branches missed.">		if(bindingResult.hasErrors()) {</span>
+<span class="nc" id="L41">			throw new InvalidStockException(&quot;Invalid Stock Details!!!&quot;);</span>
+		}
+		else
+<span class="nc" id="L44">			return new ResponseEntity&lt;&gt;(stockMarketService.saveStockPriceDetails(stockPriceDetailsDTO), HttpStatus.OK);</span>
+	}
+
+	@GetMapping(value = &quot;/getStockByCompanyCode/{companyCode}&quot;)															// 4. WORKING
+	public ResponseEntity&lt;List&lt;StockPriceDetailsDTO&gt;&gt; getStockByCompanyCode(@PathVariable Long companyCode) {
+<span class="fc" id="L49">		List&lt;StockPriceDetailsDTO&gt; list = stockMarketService.getStockByCode(companyCode);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">		if( list == null)</span>
+<span class="fc" id="L51">			throw new StockNotFoundException(&quot;Invalid Company Code!! Please enter valid companyCode...&quot;);</span>
+		else
+<span class="fc" id="L53">			return new ResponseEntity&lt;&gt;(list, HttpStatus.OK);</span>
+	}
+	//-------------------------------------------------------------------------------------------------------------------------------
+	@GetMapping(value = &quot;/getStockPriceIndex/{companyCode}/{startDate}/{endDate}&quot;)										// 5. WORKING
+	public ResponseEntity&lt;StockPriceIndexDTO&gt; displayStockPriceIndex(@PathVariable Long companyCode, @PathVariable Date startDate, @PathVariable Date endDate) {
+		
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">		if(stockMarketService.getStockPriceIndex(companyCode, startDate.toLocalDate(), endDate.toLocalDate()) == null)</span>
+<span class="nc" id="L60">			throw new StockNotFoundException(&quot;Invalid Company Code or Date!!! Please enter valid Details...&quot;);</span>
+		else	
+<span class="fc" id="L62">			return new ResponseEntity&lt;&gt;(stockMarketService.getStockPriceIndex(companyCode, startDate.toLocalDate(), endDate.toLocalDate()), HttpStatus.OK);</span>
+	}
+	
+	//===============================================================================================================================
+	//			UTITLITY EXCEPTION HANDLERS - 2
+	//===============================================================================================================================
+	@ExceptionHandler(InvalidStockException.class)
+	public ResponseEntity&lt;InvalidStockExceptionResponse&gt; companyHandler(InvalidStockException ex) {
+<span class="nc" id="L70">		InvalidStockExceptionResponse resp = new InvalidStockExceptionResponse(ex.getMessage(),System.currentTimeMillis(), HttpStatus.BAD_REQUEST.value());</span>
+<span class="nc" id="L71">		return new ResponseEntity&lt;&gt;(resp, HttpStatus.BAD_REQUEST);</span>
+		
+	}
+	//------------------------------------------------------------------------------------------------
+	@ExceptionHandler(StockNotFoundException.class)
+	public ResponseEntity&lt;InvalidStockExceptionResponse&gt; companyHandler(StockNotFoundException ex) {
+<span class="fc" id="L77">		InvalidStockExceptionResponse resp = new InvalidStockExceptionResponse(ex.getMessage(),System.currentTimeMillis(), HttpStatus.NOT_FOUND.value());</span>
+<span class="fc" id="L78">		return new ResponseEntity&lt;&gt;(resp, HttpStatus.NOT_FOUND);</span>
+		
+	}	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

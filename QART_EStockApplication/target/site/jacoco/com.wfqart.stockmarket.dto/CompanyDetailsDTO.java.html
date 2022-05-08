@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CompanyDetailsDTO.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">StockMarket</a> &gt; <a href="index.source.html" class="el_package">com.wfqart.stockmarket.dto</a> &gt; <span class="el_source">CompanyDetailsDTO.java</span></div><h1>CompanyDetailsDTO.java</h1><pre class="source lang-java linenums">package com.wfqart.stockmarket.dto;
+
+import javax.persistence.Column;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
+
+<span class="fc" id="L7">public class CompanyDetailsDTO {</span>
+
+	private Long companyCode;
+
+	@NotNull
+	@Length(min = 5, max = 50,message = &quot;Stock Exchange name should be minimun 5 characters and maximum 50 characters&quot;)
+	private String stockExchange;
+
+	@NotNull
+	@Length(min = 5, max = 50,message = &quot;Company name should be minimun 5 characters and maximum 50 characters&quot;)
+	private String companyName;
+
+	@NotNull
+	@Length(min = 3, max = 50,message = &quot;Company CEO name should be minimun 3 characters and maximum 50 characters&quot;)
+	private String companyCEO;
+
+	@NotNull(message = &quot;Company turnover cannot be empty. Please provide valid details&quot;)
+	@Column(precision=10, scale=2)
+	private Double turnover;
+
+	@NotNull
+	@Length(min = 5, max = 200,message = &quot;Company Directors should be minimun 5 characters and maximum 200 characters&quot;)
+	private String boardOfDirectors;
+
+	@NotNull
+	@Length(min = 5, max = 255,message = &quot;Company Profile should be minimun 5 characters and maximum 255 characters&quot;)
+	private String companyProfile;
+	
+	//---------------------------------------------------------------------------------------------------------------------------------
+	
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public Long getCompanyCode() {
+<span class="fc" id="L39">		return companyCode;</span>
+	}
+	public void setCompanyCode(Long companyCode) {
+<span class="fc" id="L42">		this.companyCode = companyCode;</span>
+<span class="fc" id="L43">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public String getStockExchange() {
+<span class="fc" id="L46">		return stockExchange;</span>
+	}
+	public void setStockExchange(String stockExchange) {
+<span class="fc" id="L49">		this.stockExchange = stockExchange;</span>
+<span class="fc" id="L50">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public String getCompanyName() {
+<span class="fc" id="L53">		return companyName;</span>
+	}
+	public void setCompanyName(String companyName) {
+<span class="fc" id="L56">		this.companyName = companyName;</span>
+<span class="fc" id="L57">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public String getCompanyCEO() {
+<span class="fc" id="L60">		return companyCEO;</span>
+	}
+	public void setCompanyCEO(String companyCEO) {
+<span class="fc" id="L63">		this.companyCEO = companyCEO;</span>
+<span class="fc" id="L64">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public Double getTurnover() {
+<span class="fc" id="L67">		return turnover;</span>
+	}
+	public void setTurnover(Double turnover) {
+<span class="fc" id="L70">		this.turnover = turnover;</span>
+<span class="fc" id="L71">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public String getBoardOfDirectors() {
+<span class="fc" id="L74">		return boardOfDirectors;</span>
+	}
+	public void setBoardOfDirectors(String boardOfDirectors) {
+<span class="fc" id="L77">		this.boardOfDirectors = boardOfDirectors;</span>
+<span class="fc" id="L78">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public String getCompanyProfile() {
+<span class="fc" id="L81">		return companyProfile;</span>
+	}
+	public void setCompanyProfile(String companyProfile) {
+<span class="fc" id="L84">		this.companyProfile = companyProfile;</span>
+<span class="fc" id="L85">	}</span>
+		
+	@Override
+	public String toString() {
+<span class="nc" id="L89">		return &quot;CompanyDetailsDTO [companyCode=&quot; + companyCode + &quot;, stockExchange=&quot; + stockExchange + &quot;, companyName=&quot;</span>
+<span class="nc" id="L90">				+ companyName + &quot;, companyCEO=&quot; + companyCEO + &quot;, turnover=&quot; + turnover + &quot;, boardOfDirectors=&quot;</span>
+<span class="nc" id="L91">				+ boardOfDirectors + &quot;, companyProfile=&quot; + companyProfile + &quot;]&quot;;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -77,7 +77,7 @@ public class TestController {
         
 		yakshaAssert(currentTest(),	result.getResponse().getContentAsString().contentEquals(MasterData.asJsonString(companyDto))? true : false, businessTestFile);
 	}
-	//-- BDD Test : addCompany --------------------------------------------------------------------------------------------------
+	/*//-- BDD Test : addCompany --------------------------------------------------------------------------------------------------
 	@SuppressWarnings("unused")
 	@Test
 	public void testAddCompanyBDD() throws Exception 
@@ -105,7 +105,7 @@ public class TestController {
 		
 		yakshaAssert(currentTest(), count[0] > 0 ? true : false, businessTestFile);
 	}
-
+*/
 	//---------------------------------------------------------------------------------------------------------------------------
 	//				2. Testing Rest End Point - /company/deleteCompany/{id}
 	//-- Test 1 : deleteCompany -------------------------------------------------------------------------------------------------
@@ -173,7 +173,7 @@ public class TestController {
 		
 		yakshaAssert(currentTest(),	result.getResponse().getContentAsString().contentEquals(MasterData.asJsonString(companyDto))? true : false, businessTestFile);		
 	}
-	//-- BDD Test : getCompanyInfoById ------------------------------------------------------------------------------------------
+	/*//-- BDD Test : getCompanyInfoById ------------------------------------------------------------------------------------------
 	@SuppressWarnings("unused")
 	@Test
 	public void testFindCompanyInfoByIdBDD() throws Exception 
@@ -200,117 +200,6 @@ public class TestController {
 		
 		
 		yakshaAssert(currentTest(), count[0] > 0 ? true : false, businessTestFile);			
-	}
-	
-	//---------------------------------------------------------------------------------------------------------------------------
-	//				4. Testing Rest End Point - /company/getAllCompanies
-	//-- Test 1 : getAllCompanies -----------------------------------------------------------------------------------------------
-	/*
-	 * Description : This test is to perform view all the companies from database
-	 */
-	/*@Test 
-	public void testFindAllCompanies() throws Exception 
-	{ 
-		List<CompanyDetailsDTO> list = new ArrayList<CompanyDetailsDTO>();
-		list.add(MasterData.getCompanyDetailsDTO());
-		
-		Mockito.when(companyService.getAllCompanies()).thenReturn(list);
-
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/company/getAllCompanies")
-				.contentType(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON);
-
-		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-		
-		
-		yakshaAssert(currentTest(), (result.getResponse().getContentAsString().contentEquals(MasterData.asJsonString(list))? true : false),	businessTestFile);
-	}*/
-	//-- BDD Test : getAllCompaniesBDD ------------------------------------------------------------------------------------------
-	/*@SuppressWarnings("unused")
-	@Test
-	public void testFindAllCompaniesBDD() throws Exception 
-	{
-		final int count[] = new int[1];
-		
-		List<CompanyDetailsDTO> list = new ArrayList<CompanyDetailsDTO>();
-		list.add(MasterData.getCompanyDetailsDTO());		
-		
-		Mockito.when(companyService.getAllCompanies()).then(new Answer<List<CompanyDetailsDTO>>() {
-			@Override
-			public List<CompanyDetailsDTO> answer(InvocationOnMock invocation) throws Throwable {
-				
-				count[0]++;
-				return list;
-			}
-		});
-		
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/company/getAllCompanies")
-				.contentType(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON);
-		
-		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-		
-		
-		yakshaAssert(currentTest(), count[0] > 0 ? true : false, businessTestFile);
-	}
-	*/
-	//===========================================================================================================================
-	//				II - Testing StockPriceController Rest End Points
-	//===========================================================================================================================
-	//				1. Testing Rest End Point - /stock/addStock
-	
-	//---------------------------------------------------------------------------------------------------------------------------
-	//				2. Testing Rest End Point - /stock/deleteStock/{id}
-	//-- Test 1 : deleteStock ---------------------------------------------------------------------------------------------------
-	//@Test
-	/*public void testDeleteStock() throws Exception
-	{
-        StockPriceDetailsDTO stockDto = MasterData.getStockPriceDetailsDTO();
-        Long companyCode = stockDto.getCompanyCode();
-
-		List<StockPriceDetailsDTO> stockList = new ArrayList<StockPriceDetailsDTO>();
-		stockList.add(stockDto);
-        
-		Mockito.when(stockMarketService.deleteStock(companyCode)).thenReturn(stockList);
-		
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.delete("/stock/deleteStock/" + companyCode)
-				.contentType(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON);				
-		
-		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-		
-		// changed 'true : false' to 'false : true' - 29-09-21
-		yakshaAssert(currentTest(),	result.getResponse().getContentAsString().contains("\"currentStockPrice\":55.76")? true : false, businessTestFile);
-	}*/
-	//-- BDD Test : deleteStock --------------------------------------------------------------------------------------------------
-	/*@SuppressWarnings("unused")
-	@Test
-	public void testDeleteStockBDD() throws Exception 
-	{
-		final int count[] = new int[1];
-	
-        StockPriceDetailsDTO stockDto = MasterData.getStockPriceDetailsDTO();
-        Long companyCode = stockDto.getCompanyCode();
-
-		List<StockPriceDetailsDTO> stockList = new ArrayList<StockPriceDetailsDTO>();
-		stockList.add(stockDto);
-		
-		Mockito.when(stockMarketService.deleteStock(companyCode)).then(new Answer<List<StockPriceDetailsDTO>>() {
-			@Override
-			public List<StockPriceDetailsDTO> answer(InvocationOnMock invocation) throws Throwable {
-				count[0]++;
-				return stockList;
-			}
-		});
-		
-		RequestBuilder requestBuilder = MockMvcRequestBuilders.delete("/stock/deleteStock/" + companyCode)
-				.contentType(MediaType.APPLICATION_JSON)
-				.accept(MediaType.APPLICATION_JSON);
-		
-		MvcResult result = mockMvc.perform(requestBuilder).andReturn();
-
-		
-		yakshaAssert(currentTest(), count[0] > 0 ? true : false, businessTestFile);
 	}*/
 	
 	//---------------------------------------------------------------------------------------------------------------------------

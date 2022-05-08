@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StockMarketUtility.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">StockMarket</a> &gt; <a href="index.source.html" class="el_package">com.wfqart.stockmarket.utils</a> &gt; <span class="el_source">StockMarketUtility.java</span></div><h1>StockMarketUtility.java</h1><pre class="source lang-java linenums">package com.wfqart.stockmarket.utils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.wfqart.stockmarket.dto.CompanyDetailsDTO;
+import com.wfqart.stockmarket.dto.StockPriceDetailsDTO;
+import com.wfqart.stockmarket.model.CompanyDetails;
+import com.wfqart.stockmarket.model.StockPriceDetails;
+
+public class StockMarketUtility {
+	
+<span class="nc" id="L13">	private StockMarketUtility() {</span>
+<span class="nc" id="L14">	    throw new IllegalStateException(&quot;Utility class&quot;);</span>
+	  }
+
+	//=================================================================================================================================
+	//				1. Stock Price Conversion : Model to DTO - AND - DTO to Model
+	//=================================================================================================================================
+	public static StockPriceDetails convertToStockPriceDetails(StockPriceDetailsDTO stockPriceDetailsDTO)	{
+		
+<span class="nc" id="L22">		StockPriceDetails newStock = new StockPriceDetails();</span>
+
+<span class="nc" id="L24">		newStock.setId(stockPriceDetailsDTO.getId());</span>
+<span class="nc" id="L25">		newStock.setCompanyCode(stockPriceDetailsDTO.getCompanyCode());</span>
+<span class="nc" id="L26">		newStock.setCurrentStockPrice(stockPriceDetailsDTO.getCurrentStockPrice());</span>
+<span class="nc" id="L27">		newStock.setStockPriceDate(stockPriceDetailsDTO.getStockPriceDate());</span>
+<span class="nc" id="L28">		newStock.setStockPriceTime(stockPriceDetailsDTO.getStockPriceTime());</span>
+
+<span class="nc" id="L30">        return newStock;	</span>
+	}
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public static StockPriceDetailsDTO convertToStockPriceDetailsDTO(StockPriceDetails stockPriceDetails)	{
+		
+<span class="nc" id="L35">		StockPriceDetailsDTO newStock = new StockPriceDetailsDTO();</span>
+
+<span class="nc" id="L37">		newStock.setId(stockPriceDetails.getId());</span>
+<span class="nc" id="L38">		newStock.setCompanyCode(stockPriceDetails.getCompanyCode());</span>
+<span class="nc" id="L39">		newStock.setCurrentStockPrice(stockPriceDetails.getCurrentStockPrice());</span>
+<span class="nc" id="L40">		newStock.setStockPriceDate(stockPriceDetails.getStockPriceDate());</span>
+<span class="nc" id="L41">		newStock.setStockPriceTime(stockPriceDetails.getStockPriceTime());</span>
+
+<span class="nc" id="L43">        return newStock;		</span>
+	}
+	
+	//=================================================================================================================================
+	//				2. Company Details Conversion : Model to DTO - AND - DTO to Model
+	//=================================================================================================================================
+	public static CompanyDetailsDTO convertToCompanyDetailsDTO(CompanyDetails companyDetails)	{
+		
+<span class="nc" id="L51">		CompanyDetailsDTO newCompanyDTO = new CompanyDetailsDTO();</span>
+		
+<span class="nc" id="L53">		newCompanyDTO.setCompanyCode(companyDetails.getCompanyCode());</span>
+<span class="nc" id="L54">		newCompanyDTO.setStockExchange(companyDetails.getStockExchange());</span>
+<span class="nc" id="L55">		newCompanyDTO.setCompanyName(companyDetails.getCompanyName());</span>
+<span class="nc" id="L56">		newCompanyDTO.setCompanyCEO(companyDetails.getCompanyCEO());</span>
+<span class="nc" id="L57">		newCompanyDTO.setTurnover(companyDetails.getTurnover());</span>
+<span class="nc" id="L58">		newCompanyDTO.setBoardOfDirectors(companyDetails.getBoardOfDirectors());</span>
+<span class="nc" id="L59">		newCompanyDTO.setCompanyProfile(companyDetails.getCompanyProfile());</span>
+		
+<span class="nc" id="L61">		return newCompanyDTO;</span>
+	}	
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public static CompanyDetails convertToCompanyDetails(CompanyDetailsDTO companyDetailsDTO)	{
+		
+<span class="nc" id="L66">		CompanyDetails newCompany = new CompanyDetails();</span>
+		
+<span class="nc" id="L68">		newCompany.setCompanyCode(companyDetailsDTO.getCompanyCode());</span>
+<span class="nc" id="L69">		newCompany.setStockExchange(companyDetailsDTO.getStockExchange());</span>
+<span class="nc" id="L70">		newCompany.setCompanyName(companyDetailsDTO.getCompanyName());</span>
+<span class="nc" id="L71">		newCompany.setCompanyCEO(companyDetailsDTO.getCompanyCEO());</span>
+<span class="nc" id="L72">		newCompany.setTurnover(companyDetailsDTO.getTurnover());</span>
+<span class="nc" id="L73">		newCompany.setBoardOfDirectors(companyDetailsDTO.getBoardOfDirectors());</span>
+<span class="nc" id="L74">		newCompany.setCompanyProfile(companyDetailsDTO.getCompanyProfile());</span>
+		
+<span class="nc" id="L76">		return newCompany;</span>
+	}	
+
+	//---------------------------------------------------------------------------------------------------------------------------------
+    public static List&lt;CompanyDetailsDTO&gt; convertToCompanyDetailsDtoList(List&lt;CompanyDetails&gt; companyDetailsList) {
+    	
+<span class="nc" id="L82">        List&lt;CompanyDetailsDTO&gt; list = new ArrayList&lt;&gt;();</span>
+        
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        for(CompanyDetails companyDto: companyDetailsList) {</span>
+<span class="nc" id="L85">            list.add(convertToCompanyDetailsDTO(companyDto));</span>
+        }       
+<span class="nc" id="L87">        return list;</span>
+    }
+	//---------------------------------------------------------------------------------------------------------------------------------
+    public static List&lt;StockPriceDetailsDTO&gt; convertToStockPriceDetailsDtoList(List&lt;StockPriceDetails&gt; stockPriceDetailsList) {
+    	
+<span class="nc" id="L92">		List&lt;StockPriceDetailsDTO&gt; list = new ArrayList&lt;&gt;();</span>
+		
+<span class="nc bnc" id="L94" title="All 2 branches missed.">		for(StockPriceDetails stockDto : stockPriceDetailsList) {</span>
+<span class="nc" id="L95">			list.add(convertToStockPriceDetailsDTO(stockDto));</span>
+		}
+<span class="nc" id="L97">		return list;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

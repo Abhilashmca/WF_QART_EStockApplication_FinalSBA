@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CompanyDetails.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">StockMarket</a> &gt; <a href="index.source.html" class="el_package">com.wfqart.stockmarket.model</a> &gt; <span class="el_source">CompanyDetails.java</span></div><h1>CompanyDetails.java</h1><pre class="source lang-java linenums">package com.wfqart.stockmarket.model;
+
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.Id;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name=&quot;CompanyDetails&quot;)
+public class CompanyDetails implements Serializable {
+
+	private static final long serialVersionUID = 531050392622113165L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = &quot;companyCode&quot;)
+	private Long companyCode;
+	private String stockExchange;
+	private String companyName;
+	private String companyCEO;
+	private Double turnover;
+	private String boardOfDirectors;
+	private String companyProfile;
+		
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public CompanyDetails() {
+<span class="nc" id="L35">		super();</span>
+<span class="nc" id="L36">	}</span>
+	public CompanyDetails(Long companyCode, String stockExchange, String companyName, String companyCEO, Double turnover, String boardOfDirectors, String companyProfile) {
+<span class="nc" id="L38">		super();</span>
+<span class="nc" id="L39">		this.companyCode = companyCode;</span>
+<span class="nc" id="L40">		this.stockExchange = stockExchange;</span>
+<span class="nc" id="L41">		this.companyName = companyName;</span>
+<span class="nc" id="L42">		this.companyCEO = companyCEO;</span>
+<span class="nc" id="L43">		this.turnover = turnover;</span>
+<span class="nc" id="L44">		this.boardOfDirectors = boardOfDirectors;</span>
+<span class="nc" id="L45">		this.companyProfile = companyProfile;</span>
+<span class="nc" id="L46">	}</span>
+
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public Long getCompanyCode() {
+<span class="nc" id="L50">		return companyCode;</span>
+	}
+	public void setCompanyCode(Long companyCode) {
+<span class="nc" id="L53">		this.companyCode = companyCode;</span>
+<span class="nc" id="L54">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public String getStockExchange() {
+<span class="nc" id="L57">		return stockExchange;</span>
+	}
+	public void setStockExchange(String stockExchange) {
+<span class="nc" id="L60">		this.stockExchange = stockExchange;</span>
+<span class="nc" id="L61">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public String getCompanyName() {
+<span class="nc" id="L64">		return companyName;</span>
+	}
+	public void setCompanyName(String companyName) {
+<span class="nc" id="L67">		this.companyName = companyName;</span>
+<span class="nc" id="L68">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public String getCompanyCEO() {
+<span class="nc" id="L71">		return companyCEO;</span>
+	}
+	public void setCompanyCEO(String companyCEO) {
+<span class="nc" id="L74">		this.companyCEO = companyCEO;</span>
+<span class="nc" id="L75">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public Double getTurnover() {
+<span class="nc" id="L78">		return turnover;</span>
+	}
+	public void setTurnover(Double turnover) {
+<span class="nc" id="L81">		this.turnover = turnover;</span>
+<span class="nc" id="L82">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public String getBoardOfDirectors() {
+<span class="nc" id="L85">		return boardOfDirectors;</span>
+	}
+	public void setBoardOfDirectors(String boardOfDirectors) {
+<span class="nc" id="L88">		this.boardOfDirectors = boardOfDirectors;</span>
+<span class="nc" id="L89">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public String getCompanyProfile() {
+<span class="nc" id="L92">		return companyProfile;</span>
+	}
+	public void setCompanyProfile(String companyProfile) {
+<span class="nc" id="L95">		this.companyProfile = companyProfile;</span>
+<span class="nc" id="L96">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	public Set&lt;StockPriceDetails&gt; getStockPriceDetails() {
+<span class="nc" id="L99">		return stockpriceDetails;</span>
+	}
+	public void setStockPriceDetails(Set&lt;StockPriceDetails&gt; stockPriceDetails) {
+<span class="nc" id="L102">		stockpriceDetails = stockPriceDetails;</span>
+<span class="nc" id="L103">	}</span>
+	//---------------------------------------------------------------------------------------------------------------------------------
+	@OneToMany(cascade={CascadeType.MERGE})
+	@JoinColumn(name=&quot;companyCode&quot;)
+	private Set&lt;StockPriceDetails&gt; stockpriceDetails;
+	
+	@Override
+	public String toString() {
+<span class="nc" id="L111">		return &quot;CompanyDetails [companyCode=&quot; + companyCode + &quot;, stockExchange=&quot; + stockExchange + &quot;, companyName=&quot;</span>
+<span class="nc" id="L112">				+ companyName + &quot;, companyCEO=&quot; + companyCEO + &quot;, turnover=&quot; + turnover + &quot;, boardOfDirectors=&quot;</span>
+<span class="nc" id="L113">				+ boardOfDirectors + &quot;, companyProfile=&quot; + companyProfile + &quot;]&quot;;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

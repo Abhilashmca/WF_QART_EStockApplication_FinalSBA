@@ -1,6 +1,0 @@
-projectKey=WF_QART_EStockApplication_FinalSBA
-serverUrl=http://localhost:9000
-serverVersion=7.8.0.26217
-dashboardUrl=http://localhost:9000/dashboard?id=WF_QART_EStockApplication_FinalSBA
-ceTaskId=AYCfbF8DmN96mOcYRqys
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYCfbF8DmN96mOcYRqys
